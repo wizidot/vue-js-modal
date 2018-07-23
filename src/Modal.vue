@@ -124,6 +124,9 @@ export default {
       validator (value) {
         return value >= 0 && value <= 1
       }
+    },
+    wrapper: {
+      type: String
     }
   },
   components: {
@@ -391,6 +394,14 @@ export default {
     },
 
     onWindowResize () {
+      if (!this.wrapper) {
+                      this.window.width = window.innerWidth, this.window.height = window.innerHeight;
+                    } else {
+                      var wrapper = document.getElementById(this.wrapper);
+                      console.log('WRAPPER',wrapper.offsetWidth,wrapper.offsetHeight)
+                      this.window.width = wrapper.offsetWidth;
+                      this.window.height = wrapper.offsetHeight;
+                    }
       this.window.width = window.innerWidth
       this.window.height = window.innerHeight
     },
